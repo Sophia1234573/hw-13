@@ -82,7 +82,7 @@ public class InteractionWithJsonPlaceholder {
         return users;
     }
 
-    public List<Comment> getComments(int x) throws IOException, InterruptedException {
+    public List<Comment> getComments(int x, String path) throws IOException, InterruptedException {
         int y = x * 10;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(String.format("%s%d%s", USERS_URL_POSTS, y, "/comments")))
@@ -91,7 +91,7 @@ public class InteractionWithJsonPlaceholder {
                 .build();
 
         HttpResponse<Path> response = HTTP_CLIENT.send(request, HttpResponse.BodyHandlers
-                .ofFile(Path.of("D:\\Sophia\\Java\\GoIT\\module13\\HTTP-hw\\src\\main\\resources\\user-" + x + "-post-" + y + "-comments.json")));
+                .ofFile(Path.of(path + x + "-post-" + y + "-comments.json")));
         HttpResponse<String> responseToPrint = HTTP_CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
         List<Comment> comments = GSON.fromJson(responseToPrint.body(), new TypeToken<List<Comment>>(){}.getType());
         return comments;

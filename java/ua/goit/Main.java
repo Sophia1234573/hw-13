@@ -3,6 +3,7 @@ package ua.goit;
 import java.io.IOException;
 
 public class Main {
+    private static String pathToFile = "D:\\Sophia\\Java\\GoIT\\module13\\HTTP-hw\\src\\main\\resources\\user-";
 
     public static void main(String[] args) throws IOException, InterruptedException {
         InteractionWithJsonPlaceholder interaction = new InteractionWithJsonPlaceholder();
@@ -37,7 +38,7 @@ public class Main {
         //Get comments of last users post
         System.out.println("-----------------------");
         System.out.println("Get comments");
-        System.out.println(interaction.getComments(7));
+        System.out.println(interaction.getComments(2, pathToFile));
 
         //Get todos for user by id
         System.out.println("-----------------------");
